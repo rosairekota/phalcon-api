@@ -1,0 +1,17 @@
+{
+    "name": "anicns/medications-api",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "rkota",
+            "email": "rosairekota@anicns.gouv.cd"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
