@@ -9,11 +9,15 @@ class MedicationService{
    
     public function getAll(): mixed  {
         //var_dump($this->managerInterface);
-        $medications = MedicationProviders::find();
+        $medications = Medications::find();
         $medicationRelated =[];
         foreach ($medications as $medication) {
-            $medicationRelated[]= $medication->getRelated('medication');
-            $medicationRelated[]= ['provider' => $medication->getRelated('provider')];
+            $medicationData = [
+                'id' => $medication->id,
+                'name' => $medication->name,
+                'providers' => $medication->getRelated('providers') 
+            ];
+            $medicationRelated[]=  $medicationData;
         }
         return $medicationRelated;
     }
