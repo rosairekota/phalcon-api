@@ -1,9 +1,11 @@
 <?php
 namespace App\models;
 
+use MedicationProviders;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\ResultsetInterface;
+use Providers;
 
 class Medications extends Model
 {
@@ -27,6 +29,18 @@ class Medications extends Model
     {
         $this->setSchema("medication_db_phalcon");
         $this->setSource("medications");
+        $this->hasManyToMany(
+            'id',
+            MedicationProviders::class,
+            'provider_id',
+            'medication_id',
+            Providers::class,
+            'id',
+            [
+                'reusable' => true,
+                'alias'    => 'providers',
+            ]
+        );
     }
 
     /**
